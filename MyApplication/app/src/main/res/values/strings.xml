@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Pseudo Random Generator</string>
+    <string name="edit_message">Enter a number of size</string>
+    <string name="button_send">Generate</string>
+    <string name="pr_message">Pseudo Random Number</string>
+    <string name="num_message">Number of z and o</string>
+    <string name="time_message">Time of consuming</string>
+</resources>

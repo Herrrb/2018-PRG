@@ -1,0 +1,150 @@
+{% load  staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <link rel="shortcut icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT32QA3HQyl7qJozmPSURFTvMz5MHwMi1R3jVTR3Yv9fxKKljXx"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>随机数生成器</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="{% static "vendor/magnific-popup/magnific-popup.css" %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/freelancer.min.css" %}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">PRG</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#rsize">发生器</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/api/?size=10000">API接口</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% if num_0 %}
+        <div class="alert alert-success alert-dismissable" style="padding-top: 160px">
+            <h4>
+                已生成！
+            </h4>
+            <strong>01个数：</strong>0的个数为{{ num_0 }}， 1的个数为{{ num_1 }}
+        </div>
+    {% endif %}
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <!-- <img class="img-fluid mb-5 d-block mx-auto" src="img/profile1.png" alt=""> -->
+        <h1 class="text-uppercase mb-0">Pseudo Random Generator</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">Small, Stable, Convenient</h2>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section class="rsize" id="rsize">
+      <div class="container">
+        <form role="form" action="." method="post">
+          <div class="form-group" align="center">
+            <h3 class="text-center text-uppercase text-secondary mb-0">随机数的大小</h3>
+            <hr class="star-dark mb-5">
+            <input type="text" class="form-control" id="size" required placeholder="例如：1B、1KB、1MB" name="size"/>
+                      <br>
+              <input type="submit" class="btn btn-primary" value="提交">
+                  </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="sequence" id="sequence">
+      <div class="container">
+        <h3 class="text-center text-uppercase text-secondary mb-0">随机数的01序列</h3>
+        <hr class="star-dark mb-5">
+        <p style="word-wrap: break-word">
+            {{ pseudo_r }}
+        </p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-primary text-white mb-0" id="about">
+      <div class="container"  style="font-family: Arial, Helvetica, sans-serif">
+        <h2 class="text-center text-uppercase text-white">About</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead">基于软件平台，生成指定大小的随机数序列，并提供相应API接口</p>
+          </div>
+          <div class="col-lg-4 mr-auto">
+            <p class="lead">
+              <span>API:使用说明</span><br>
+              <span>调用：url/api/?size=****</span><br>
+              <span>****为需要生成的位数；</span><br>
+              <span>返回格式为Json，内容包括01个数与随机数序列；</span><br>
+              <span>示例中使用的size为10000位。</span><br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; ALL rights reserved 2018</small>
+      </div>
+    </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static "vendor/jquery-easing/jquery.easing.min.js" %}"></script>
+    <script src="{% static "vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static "js/freelancer.min.js" %}"></script>
+    {% if message %}
+        <script>
+            alert('{{ message }}');
+        </script>
+    {% endif %}
+  </body>
+
+</html>
